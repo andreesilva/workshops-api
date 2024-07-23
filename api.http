@@ -1,0 +1,106 @@
+
+### Criando usuário
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+   "name": "silvia",
+   "email": "silvia@gmail.com",
+   "password": "123456"
+}
+
+
+###  Login
+# @name loginUser
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+   "email": "silvia@gmail.com",
+   "password": "123456"
+}
+
+###
+@token = {{ loginUser.response.body.access_token }} 
+
+### Cadastro Colaborador
+POST http://localhost:3000/api/collaborators
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+   "name": "Gomes"
+   
+}
+
+### Cadastro Workshop
+POST http://localhost:3000/api/workshops
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+   "name": "Inteligencia Artificial",
+   "dateCompletion": "2024-09-01T00:00:00",
+   "description": "Novidades do mundo do IA"
+   
+}
+
+### Cadastro Ata de Presença
+POST http://localhost:3000/api/attendance-sheets
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+   "workshopId": 3
+}
+
+### Adicionar colaborador na ata de presença de um workshop 
+POST http://localhost:3000/api/attendance-sheet/collaborators
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+   "attendanceSheetId": 4,
+   "collaboratorId": 1
+}
+
+### Remover colaborador da ata de presença 
+DELETE http://localhost:3000/api/attendance-sheet/collaborators/1/collaborator/3
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+
+### Lista de colaboradores
+GET http://localhost:3000/api/collaborators
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### Lista de Atas
+GET http://localhost:3000/api/attendance-sheets
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### Lista de workshops
+GET http://localhost:3000/api/workshops
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### Lista de Colaboradores na ata
+GET http://localhost:3000/api/attendance-sheet/collaborators
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+### Filtro de workshop por data do workshop
+GET http://localhost:3000/api/attendance-sheets?data=2024-10-01T00:00:00.000Z
+Content-Type: application/json
+###Authorization: Bearer {{token}}
+
+### Filtro de workshop por nome do workshop
+GET http://localhost:3000/api/attendance-sheets?workshopNome=
+Content-Type: application/json
+###Authorization: Bearer {{token}}
