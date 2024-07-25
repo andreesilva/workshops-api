@@ -57,6 +57,11 @@ export class AttendanceSheetsController {
     return this.attendanceSheetsService.getAllWorkshops();
   }
 
+  @Get('collaborator/:id')
+  getWorkshopWithCollaborators(id: number) {
+    return this.attendanceSheetsService.getWorkshopWithCollaborators(id);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.attendanceSheetsService.remove(+id);

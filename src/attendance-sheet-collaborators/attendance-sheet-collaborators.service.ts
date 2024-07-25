@@ -68,7 +68,7 @@ export class AttendanceSheetCollaboratorsService {
 
     return this.prismaService.attendanceSheetCollaborator.delete({
       where: {
-        id: attendanceSheetCollaborator!.id,
+        id: attendanceSheetCollaborator.id,
       },
     });
   }

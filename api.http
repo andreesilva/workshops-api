@@ -4,8 +4,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-   "name": "silvia",
-   "email": "silvia@gmail.com",
+   "name": "adri",
+   "email": "adri@gmail.com",
    "password": "123456"
 }
 
@@ -16,7 +16,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-   "email": "silvia@gmail.com",
+   "email": "adri@gmail.com",
    "password": "123456"
 }
 
@@ -102,5 +102,11 @@ Content-Type: application/json
 
 ### Filtro de workshop por nome do workshop
 GET http://localhost:3000/api/attendance-sheets?workshopNome=
+Content-Type: application/json
+###Authorization: Bearer {{token}}
+
+
+### Filtro de workshop por nome do workshop
+GET http://localhost:3000/api/attendance-sheets/collaborator/3
 Content-Type: application/json
 ###Authorization: Bearer {{token}}

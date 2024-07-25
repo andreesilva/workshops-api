@@ -78,6 +78,26 @@ export class AttendanceSheetsService {
     });
   }
 
+  getWorkshopWithCollaborators(id: number) {
+    console.log(id);
+    return this.prismaService.workshop.findMany({
+      where: {
+        id: id,
+      },
+      include: {
+        attendanceSheet: {
+          include: {
+            attendanceSheetCollaborator: {
+              include: {
+                collaborator: true,
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+
   getDateWorkshop(query: string) {
     return this.prismaService.workshop.findMany({
       where: {
