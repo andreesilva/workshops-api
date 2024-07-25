@@ -12,9 +12,6 @@ import {
 } from '@nestjs/common';
 import { AttendanceSheetsService } from './attendance-sheets.service';
 import { CreateAttendanceSheetDto } from './dto/create-attendance-sheet.dto';
-//import { UpdateAttendanceSheetDto } from './dto/update-attendance-sheet.dto';
-//import { AuthGuard } from 'src/auth/auth.guard';
-//mport { SearchParamsDto } from 'src/workshops/dto/search-params.dto';
 
 //@UseGuards(AuthGuard)
 @Controller('api/attendance-sheets')
@@ -28,16 +25,10 @@ export class AttendanceSheetsController {
     return this.attendanceSheetsService.create(createAttendanceSheetDto);
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.attendanceSheetsService.findAll();
-  // }
-
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.attendanceSheetsService.findOne(+id);
   }
-  //getUsers(@Query() params: any): IUser[] {
 
   @Get()
   getNameWorkshop(@Query('workshopNome') workshopNome: string) {
@@ -58,8 +49,8 @@ export class AttendanceSheetsController {
   }
 
   @Get('collaborator/:id')
-  getWorkshopWithCollaborators(id: number) {
-    return this.attendanceSheetsService.getWorkshopWithCollaborators(id);
+  getWorkshopWithCollaborators(@Param('id') id: string) {
+    return this.attendanceSheetsService.getWorkshopWithCollaborators(+id);
   }
 
   @Delete(':id')

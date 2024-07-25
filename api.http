@@ -107,6 +107,6 @@ Content-Type: application/json
 
 
 ### Filtro de workshop por nome do workshop
-GET http://localhost:3000/api/attendance-sheets/collaborator/3
+GET http://localhost:3000/api/attendance-sheets/collaborator/1
 Content-Type: application/json
 ###Authorization: Bearer {{token}}
