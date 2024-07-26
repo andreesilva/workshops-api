@@ -79,7 +79,6 @@ export class AttendanceSheetsService {
   }
 
   getWorkshopWithCollaborators(id: number) {
-    console.log('' + id);
     return this.prismaService.workshop.findMany({
       where: {
         id: id,
