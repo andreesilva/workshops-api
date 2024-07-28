@@ -43,6 +43,27 @@ export class AttendanceSheetsService {
   }
   */
 
+  getCollaboratorWorkshop(query: string) {
+    return this.prismaService.workshop.findMany({
+      where: {
+        attendanceSheet: {
+          some: {
+            attendanceSheetCollaborator: {
+              some: {
+                collaborator: {
+                  name: query,
+                },
+              },
+            },
+          },
+        },
+      },
+      include: {
+        attendanceSheet: true,
+      },
+    });
+  }
+
   getNameWorkshop(query: string) {
     return this.prismaService.workshop.findMany({
       where: {

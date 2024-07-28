@@ -36,7 +36,7 @@ model Collaborator {
 model Workshop {
   id             Int      @id @default(autoincrement())
   name           String
-  dateCompletion DateTime
+  dateCompletion String
   description    String
   createdAt      DateTime @default(now())
   updateAt       DateTime @updatedAt

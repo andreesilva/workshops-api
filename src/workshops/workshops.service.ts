@@ -11,7 +11,6 @@ export class WorkshopsService {
     return this.prismaService.workshop.create({
       data: {
         ...createWorkshopDto,
-        dateCompletion: new Date(createWorkshopDto.dateCompletion),
       },
     });
   }

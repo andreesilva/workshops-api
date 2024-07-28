@@ -4,8 +4,8 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-   "name": "adri",
-   "email": "adri@gmail.com",
+   "name": "andre",
+   "email": "andre@gmail.com",
    "password": "123456"
 }
 
@@ -16,7 +16,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-   "email": "adri@gmail.com",
+   "email": "andre@gmail.com",
    "password": "123456"
 }
 
@@ -29,7 +29,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-   "name": "Gomes"
+   "name": "Gustavo Lima"
    
 }
 
@@ -39,9 +39,9 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-   "name": "Inteligencia Artificial",
-   "dateCompletion": "2024-09-01T00:00:00",
-   "description": "Novidades do mundo do IA"
+   "name": "Falando sobre negócios",
+   "dateCompletion": "01-08-2024",
+   "description": "Tecnologias bussiness"
    
 }
 
@@ -60,8 +60,8 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-   "attendanceSheetId": 4,
-   "collaboratorId": 1
+   "attendanceSheetId": 3,
+   "collaboratorId": 5
 }
 
 ### Remover colaborador da ata de presença 
@@ -95,18 +95,22 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 
+### Filtro de workshop por colaborador
+GET http://localhost:3000/api/attendance-sheets/workshop/collaborator?collaborator=Maria Lima de Sá
+Content-Type: application/json
+###Authorization: Bearer {{token}}
+
 ### Filtro de workshop por data do workshop
-GET http://localhost:3000/api/attendance-sheets?data=2024-10-01T00:00:00.000Z
-Content-Type: application/json
+GET http://localhost:3000/api/attendance-sheets/workshop/date?date=01-08-2024
 ###Authorization: Bearer {{token}}
 
 ### Filtro de workshop por nome do workshop
-GET http://localhost:3000/api/attendance-sheets?workshopNome=
+GET http://localhost:3000/api/attendance-sheets/workshop/name?name=Desenvolvimento Web
 Content-Type: application/json
 ###Authorization: Bearer {{token}}
 
 
 ### Filtro de workshop por nome do workshop
-GET http://localhost:3000/api/attendance-sheets/collaborator/1
+GET http://localhost:3000/api/attendance-sheets/collaborator/3
 Content-Type: application/json
 ###Authorization: Bearer {{token}}

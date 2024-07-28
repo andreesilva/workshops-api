@@ -30,20 +30,29 @@ export class AttendanceSheetsController {
     return this.attendanceSheetsService.findOne(+id);
   }
 
-  @Get()
-  getNameWorkshop(@Query('workshopNome') workshopNome: string) {
-    console.log('workshopNome ' + workshopNome);
-    if (workshopNome) {
-      return this.attendanceSheetsService.getNameWorkshop(workshopNome);
+  @Get('workshop/collaborator?')
+  getCollaboratorWorkshop(@Query('collaborator') collaborator: string) {
+    console.log('collaborator ' + collaborator);
+    if (collaborator) {
+      return this.attendanceSheetsService.getCollaboratorWorkshop(collaborator);
     }
     return this.attendanceSheetsService.getAllWorkshops();
   }
 
-  @Get()
-  getDateWorkshop(@Query('data') data: string) {
-    console.log('data ' + data);
-    if (data) {
-      return this.attendanceSheetsService.getDateWorkshop(data);
+  @Get('workshop/name?')
+  getNameWorkshop(@Query('name') name: string) {
+    console.log('name ' + name);
+    if (name) {
+      return this.attendanceSheetsService.getNameWorkshop(name);
+    }
+    return this.attendanceSheetsService.getAllWorkshops();
+  }
+
+  @Get('workshop/date?')
+  getDateWorkshop(@Query('date') date: string) {
+    console.log('date ' + date);
+    if (date) {
+      return this.attendanceSheetsService.getDateWorkshop(date);
     }
     return this.attendanceSheetsService.getAllWorkshops();
   }
