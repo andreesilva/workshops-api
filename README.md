@@ -13,3 +13,6 @@ Comandos
 - npx prisma migrate dev
 - npm install @prisma/client
 - Iniciar a aplicação -> npm run start:dev 
+
+
+Documentação em : http://localhost:3000/api
