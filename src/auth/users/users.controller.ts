@@ -8,7 +8,7 @@ import { UserPresenter } from './user-presenter';
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
-  @ApiTags('Users')
+  @ApiTags('Usuário')
   @Post()
   async create(@Body() data: CreateUserDto) {
     const user = await this.usersService.createUser(data);

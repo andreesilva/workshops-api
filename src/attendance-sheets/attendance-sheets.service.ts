@@ -33,16 +33,6 @@ export class AttendanceSheetsService {
     });
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} attendanceSheet`;
-  }
-  /*
-
-  update(id: number, updateAttendanceSheetDto: UpdateAttendanceSheetDto) {
-    return `This action updates a #${id} attendanceSheet`;
-  }
-  */
-
   getCollaboratorWorkshop(query: string) {
     return this.prismaService.workshop.findMany({
       where: {
@@ -104,10 +94,16 @@ export class AttendanceSheetsService {
       where: {
         id: id,
       },
+
       include: {
         attendanceSheet: {
           include: {
             attendanceSheetCollaborator: {
+              orderBy: {
+                collaborator: {
+                  name: 'asc',
+                },
+              },
               include: {
                 collaborator: true,
               },
@@ -135,9 +131,5 @@ export class AttendanceSheetsService {
         },
       },
     });
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} attendanceSheet`;
   }
 }

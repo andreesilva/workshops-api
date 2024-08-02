@@ -3,23 +3,23 @@ import {
   Get,
   Post,
   Body,
-  //Patch,
   Param,
   Delete,
-  //UseGuards,
+  UseGuards,
 } from '@nestjs/common';
 import { AttendanceSheetCollaboratorsService } from './attendance-sheet-collaborators.service';
 import { CreateAttendanceSheetCollaboratorDto } from './dto/create-attendance-sheet-collaborator.dto';
-//import { UpdateAttendanceSheetCollaboratorDto } from './dto/update-attendance-sheet-collaborator.dto';
-//import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from 'src/auth/auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
-//@UseGuards(AuthGuard)
+@UseGuards(AuthGuard)
 @Controller('api/attendance-sheet/collaborators')
 export class AttendanceSheetCollaboratorsController {
   constructor(
     private readonly attendanceSheetCollaboratorsService: AttendanceSheetCollaboratorsService,
   ) {}
 
+  @ApiTags('Ata de presença')
   @Post()
   create(
     @Body()
@@ -30,44 +30,13 @@ export class AttendanceSheetCollaboratorsController {
     );
   }
 
+  @ApiTags('Ata de presença')
   @Get()
   findAll() {
     return this.attendanceSheetCollaboratorsService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.attendanceSheetCollaboratorsService.findOne(+id);
-  }
-
-  // @Patch(':id')
-  // update(
-  //   @Param('id') id: string,
-  //   @Body()
-  //   updateAttendanceSheetCollaboratorDto: UpdateAttendanceSheetCollaboratorDto,
-  // ) {
-  //   return this.attendanceSheetCollaboratorsService.update(
-  //     +id,
-  //     updateAttendanceSheetCollaboratorDto,
-  //   );
-  // }
-  /*
-  @Delete(':id')
-  async remove(@Param('id') id: string) {
-    try {
-      await this.userService.remove(+id);
-      return {
-        success: true,
-        message: 'User Deleted Successfully',
-      };
-    } catch (error) {
-      return {
-        success: false,
-        message: error.message,
-      };
-    }
-  }
-  */
+  @ApiTags('Ata de presença')
   @Delete(':attendanceSheetId/collaborator/:collaboratorId')
   remove(
     @Param('attendanceSheetId') attendanceSheetId: number,

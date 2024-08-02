@@ -4,10 +4,12 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-   "name": "andre",
-   "email": "andre@gmail.com",
+   "name": "josenete",
+   "email": "josenet@gmail.com",
    "password": "123456"
 }
+
+
 
 
 ###  Login
@@ -16,12 +18,17 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-   "email": "andre@gmail.com",
+   "email": "josenet@gmail.com",
    "password": "123456"
 }
 
+
 ###
 @token = {{ loginUser.response.body.access_token }} 
+
+
+GET http://localhost:3000/auth/me
+Authorization: Bearer {{token}}
 
 ### Cadastro Colaborador
 POST http://localhost:3000/api/collaborators
@@ -29,7 +36,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-   "name": "Gustavo Lima"
+   "name": "Hélio Nunes da Silva"
    
 }
 
@@ -39,9 +46,9 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-   "name": "Falando sobre negócios",
-   "dateCompletion": "01-08-2024",
-   "description": "Tecnologias bussiness"
+   "name": "Saúde ambiental",
+   "dateCompletion": "10-08-2024",
+   "description": "Como preservar o meio ambiente"
    
 }
 
@@ -51,7 +58,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-   "workshopId": 3
+   "workshopId": 6
 }
 
 ### Adicionar colaborador na ata de presença de um workshop 
@@ -60,12 +67,12 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-   "attendanceSheetId": 3,
+   "attendanceSheetId": 6,
    "collaboratorId": 5
 }
 
 ### Remover colaborador da ata de presença 
-DELETE http://localhost:3000/api/attendance-sheet/collaborators/1/collaborator/3
+DELETE http://localhost:3000/api/attendance-sheet/collaborators/3/collaborator/1
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
@@ -76,11 +83,6 @@ GET http://localhost:3000/api/collaborators
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
-
-### Lista de Atas
-GET http://localhost:3000/api/attendance-sheets
-Content-Type: application/json
-Authorization: Bearer {{token}}
 
 
 ### Lista de workshops
@@ -98,19 +100,19 @@ Authorization: Bearer {{token}}
 ### Filtro de workshop por colaborador
 GET http://localhost:3000/api/attendance-sheets/workshop/collaborator?collaborator=Maria Lima de Sá
 Content-Type: application/json
-###Authorization: Bearer {{token}}
+Authorization: Bearer {{token}}
 
 ### Filtro de workshop por data do workshop
 GET http://localhost:3000/api/attendance-sheets/workshop/date?date=01-08-2024
-###Authorization: Bearer {{token}}
+Authorization: Bearer {{token}}
 
 ### Filtro de workshop por nome do workshop
 GET http://localhost:3000/api/attendance-sheets/workshop/name?name=Desenvolvimento Web
 Content-Type: application/json
-###Authorization: Bearer {{token}}
+Authorization: Bearer {{token}}
 
 
 ### Filtro de workshop por nome do workshop
-GET http://localhost:3000/api/attendance-sheets/collaborator/3
+GET http://localhost:3000/api/attendance-sheets/collaborator/4
 Content-Type: application/json
-###Authorization: Bearer {{token}}
+Authorization: Bearer {{token}}
